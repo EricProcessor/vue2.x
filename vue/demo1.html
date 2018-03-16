@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <td>姓名</td>
+                    <td>年龄</td>
+                    <td>性别</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="p in persons">
+                    <td>{{ p.name }}</td>
+                    <td>{{ p.age }}</td>
+                    <td> {{ p.sex }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        //1创建vue的实例
+        let vm = new Vue({
+            el:"#app",
+            data:{//vue中的model ->数据
+               persons:[
+                   {name:'张三',age:18,sex:'男'},
+                   {name:'李四',age:19,sex:'男'},
+                   {name:'王五',age:28,sex:'女'}
+               ]
+            }
+        });
+    </script>
+</body>
+</html>

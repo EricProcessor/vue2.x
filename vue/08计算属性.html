@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>操作前数据:{{name}}</p>
+        <p>调用函数:{{doRevers()}}</p>
+        <p>计算属性:{{reverse}}</p>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        //1创建vue的实例
+        new Vue({
+            el:"#app",
+            data:{//vue中的model ->数据
+                name:"Jack Rose"
+            },
+            methods:{
+                doRevers(){
+                    return this.name.split('').reverse().join('')
+                }
+            },
+            // 计算选项
+            computed:{
+                //get 方法
+                reverse(){
+                    return this.name.split('').reverse().join('')
+                }
+            }
+        });
+    </script>
+</body>
+</html>

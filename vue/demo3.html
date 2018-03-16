@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #app{
+            margin: 50px auto;
+            width: 600px;
+        }
+        fieldset{
+            border: solid 1px orange;
+        }
+        fieldset input{
+            width: 200px;
+            height: 30px;
+            margin: 10px 0;
+        }
+        table{
+            width: 600px;
+            border: 2px solid orangered;
+            text-align: center;
+        }
+        thead{
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 第一部分 -->
+        <fieldset>
+            <legend>拇指哥学生录入系统</legend>
+            <div>
+                <span>姓名</span>
+                <input type="text" placeholder="请输入姓名" v-model="newme.name">
+            </div>
+            <div>
+                <span>年龄</span>
+                <input type="text" placeholder="请输入姓名" v-model="newme.age">
+            </div>
+            <div>
+                <span>性别</span>
+                <select v-model="newme.sex">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </div>
+            <div>
+                <span>手机</span>
+                <input type="text" placeholder="请输入手机号码" v-model="newme.phone">
+            </div>
+            <button @click="createNew()">创建新用户</button>
+        </fieldset>
+        <!-- 第二部分 -->
+        <table>
+            <thead>
+                <tr>
+                    <td>姓名</td>
+                    <td>年龄</td>
+                    <td>性别</td>
+                    <td>手机</td>
+                    <td>删除</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(person, index) in persons">
+                    <td>{{person.name}}</td>
+                    <td>{{person.age}}</td>
+                    <td>{{person.sex}}</td>
+                    <td>{{person.phone}}</td>
+                    <td><button @click="deleteMe(index)">删除</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        //1创建vue的实例
+        let vm = new Vue({
+            el:"#app",
+            data:{//vue中的model ->数据
+               persons:[
+                   {name:"张三",age:20,sex:"男",phone:'1850000000'},
+                   {name:"李四",age:44,sex:"男",phone:'1850000000'},
+                   {name:"王五",age:22,sex:"男",phone:'1850000000'},
+                   {name:"赵六",age:23,sex:"男",phone:'1850000000'}
+               ],
+               newme:{name:'',age:'0',sex:'男',phone:''}
+            },
+            methods:{
+                // 创建一条新记录
+                createNew(){
+                    if(this.newme.name===""){
+                            alert("姓名不能为空");
+                            return;
+                    }
+                    if(this.newme.age===""){
+                            alert("年龄不能为空");
+                            return;
+                    }
+                    if(this.newme.sex===""){
+                            alert("性别不能为空");
+                            return;
+                    }
+                    if(this.newme.phone===""){
+                            alert("手机不能为空");
+                            return;
+                    }
+                    // 添加一条数据
+                   this.persons.unshift(this.newme);
+                    // 第二次添加时清空  
+                   this.newme={name:'',age:'0',sex:'男',phone:''}
+                },
+                deleteMe(index){
+                    this.persons.splice(index,1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

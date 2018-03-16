@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-for="(score,index) in scores">
+            {{ index +":" + score }}
+        </p>
+        <p v-for="d in dog">
+            {{ d }}
+        </p>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        //1创建vue的实例
+        let vm = new Vue({
+            el:"#app",
+            data:{//vue中的model ->数据
+                scores:[100,87,88,80],
+                dog:{naem:'gougog',age:6,heiget:1.44},
+                name:'zhangsan'
+            }
+        });
+    </script>
+</body>
+</html>

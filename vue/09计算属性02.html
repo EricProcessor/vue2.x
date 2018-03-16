@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{fullName}}</p>
+        <button @click="deal()">调用setter方法</button>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        //1创建vue的实例
+        let vm = new Vue({
+            el:"#app",
+            data:{//vue中的model ->数据
+                firstName:'zhang',
+                lastName:'sanfeng'
+            },
+            methods:{
+                deal(){
+                    this.fullName = "Tokken Lily"
+                }
+            },
+            computed:{
+                /*
+                fullName(){
+                    return this.firstName+" "+this.lastName;
+                }
+                */
+                fullName:{
+                    get(){
+                        return this.firstName+" "+this.lastName;
+                    },
+                    set(str){
+                        let nameArr = str.split(' ');
+                        this.firstName = nameArr[0];
+                        this.lastName = nameArr[1];
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

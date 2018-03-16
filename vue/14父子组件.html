@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <parent></parent>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        //1 子组件构造器
+        let child1 = Vue.extend({
+            template:`<p>今天是2228888</p>`
+        })
+        let child2 = Vue.extend({
+            template:`<p>明天天是11111188</p>`
+        })
+
+        //2 父组件构造器
+        Vue.component('parent',{
+            components:{
+               'my-child1': child1,
+               'my-child2': child2
+            },
+            template:`
+                <div>
+                    <my-child1></my-child1>
+                    <my-child2></my-child2>
+                </div>
+            `
+        })
+
+        //1创建vue的实例
+     new Vue({
+            el:"#app",
+            data:{//vue中的model ->数据
+                msg:"你好,世界"
+            }
+        });
+    </script>
+</body>
+</html>

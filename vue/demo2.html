@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .active{
+        background-color: orangered;
+        font-size: 20px;
+        color: #fff;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p v-for="(collage,index) in collages" :class="index===activeIdex?'active':''">
+            {{collage}}
+        </p>
+        <p v-bind:style="{color:fontColor}">今天是周三啊</p>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        //1创建vue的实例
+        let vm = new Vue({
+            el:"#app",
+            data:{//vue中的model ->数据
+               collages:[
+                  'iOS学院' ,
+                  'ui学院' ,
+                  'java学院' ,
+                  'php学院' ,
+                  'html5学院' ,
+                  'css3学院' ,
+               ],
+               activeIdex:0,
+               fontColor:'green'
+            }
+        });
+    </script>
+</body>
+</html>
